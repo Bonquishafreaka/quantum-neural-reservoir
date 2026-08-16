@@ -42,3 +42,20 @@ python run.py
 ```
 
 ## Files
+
+data.py neuron models (Izhikevich, Hindmarsh-Rose) + supervised framing
+reservoir.py the fixed quantum reservoir circuit
+readout.py ridge-regression linear readout (the only trained part)
+run.py end-to-end pipeline + linear baseline + plot
+
+## Swapping in real data
+
+Replace the generators in `data.py` with a function returning a 1-D normalised array — an
+EEG channel, an intracellular recording, a binned spike train — and the rest is unchanged.
+
+## Caveats
+
+- Small qubit counts only; simulation cost doubles per qubit (~20 qubits is where a laptop slows).
+- The reservoir is fixed random — no attempt to optimise its dynamics.
+- Single-neuron traces. Population dynamics is the natural next step.
+- No claim of quantum *advantage*; that needs a head-to-head against a classical echo-state network.
